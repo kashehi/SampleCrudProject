@@ -98,9 +98,9 @@ namespace SampleProject.Services.Contracts.EFServices
                 product.Description = productInfo.Description;
                 product.Count = productInfo.Count;
                 product.Price = productInfo.Price;
-                product.Color = product.Color;
-                product.Model = product.Model;
-                product.Mission = product.Mission;
+                product.Color = productInfo.Color;
+                product.Model = productInfo.Model;
+                product.Mission = productInfo.Mission;
 
                 _dbContext.SaveChanges();
 
