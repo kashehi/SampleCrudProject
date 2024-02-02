@@ -1,0 +1,49 @@
+﻿@model List<SampleProject.ViewModels.Product.ViewProductViewModel>
+@{
+    ViewData["Title"] = "Index";
+  
+}
+
+
+<a class="btn btn-primary mb-2 ms-lg-0" href="Product/Add">
+   ایجاد محصول
+</a>
+<table class="table table-bordered table-hover table-sm table-responsive text-center">
+
+    <thead class="thead-dark">
+        <tr>
+
+            <th scope="col">نام محصول</th>
+            <th scope="col">توضیحات</th>
+            <th scope="col">مدل</th>
+            <th scope="col">قیمت</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <th>@product.Title</th>
+                <td>@product.Description</td>
+                <td>@product.Model</td>
+                <td>@product.Price</td>
+                <td>
+                    <a href="Product/Update/@product.Id">
+                        <svg bootstrap-icon="PencilFill" width="24" height="24" aria-label="PencilFill" color="cornflowerblue"></svg>
+                    </a>
+                </td>
+                <td>
+                    <a href="Product/Delete/@product.Id">
+                        <svg bootstrap-icon="TrashFill" width="24" height="24" aria-label="TrashFill" color="#FF5733"></svg>
+                    </a>
+                </td>
+
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+

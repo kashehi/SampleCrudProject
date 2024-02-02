@@ -1,0 +1,26 @@
+
+@font-face {
+    font-family: 'IranSans';
+    src: url('../fonts/IRANSans Medium.ttf') format('truetype');
+}
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    direction: rtl;
+    font-family: IranSans;
+    
+}

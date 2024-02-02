@@ -1,0 +1,51 @@
+﻿@model SampleProject.ViewModels.Product.ViewProductViewModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h4>ایجاد محصول</h4>
+<hr />
+
+<form method="post" action="Add" class=mt-5>
+    <div class="mb-3">
+        <label for="exampleInputTitle" class="form-label">نام محصول</label>
+        <input type="text" class="form-control" id="Title" asp-for="Title">
+
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputDescription" class="form-label">توضیحات</label>
+        <input type="text" class="form-control" id="Description" asp-for="Description">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputCount" class="form-label">تعداد</label>
+        <input type="text" class="form-control" id="Count" asp-for="Count">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPrice" class="form-label">قیمت</label>
+        <input type="text" class="form-control" id="Price" asp-for="Price">
+    </div>
+     <div class="mb-3">
+        <label for="exampleInputModel" class="form-label">مدل</label>
+        <input type="text" class="form-control" id="Model" asp-for="Model">
+    </div>
+     <div class="mb-3">
+        <label for="exampleInputColor" class="form-label">رنگ</label>
+        <input type="text" class="form-control" id="Color" asp-for="Color">
+    </div>
+     <div class="mb-3">
+        <label for="exampleInputMission" class="form-label">ابعاد</label>
+        <input type="text" class="form-control" id="Mission" asp-for="Mission">
+    </div>
+
+    <button type="submit" class="btn btn-primary">افزودن</button>
+    <a class="btn btn-warning" href="/Product">انصراف</a>
+</form>
+
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

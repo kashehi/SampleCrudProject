@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SampleProject.DataLayer\SampleProject.DataLayer.csproj" />
+    <ProjectReference Include="..\SampleProject.Entities\SampleProject.Entities.csproj" />
+    <ProjectReference Include="..\SampleProject.ViewModels\SampleProject.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>
