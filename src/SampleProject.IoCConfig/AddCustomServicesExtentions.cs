@@ -11,15 +11,16 @@ public static class AddCustomServicesExtentions
 {
     public static IServiceCollection AddCustomeServices(this IServiceCollection services)
     {
-        var provider=services.BuildServiceProvider();
-        var connectionStrings = provider.GetRequiredService<IOptionsMonitor< ConnectionStrings >> ().CurrentValue;
-        services.AddDbContext<SampleProjectDbContext>(options=>{
+        var provider = services.BuildServiceProvider();
+        var connectionStrings = provider.GetRequiredService<IOptionsMonitor<ConnectionStrings>>().CurrentValue;
+        services.AddDbContext<SampleProjectDbContext>(options =>
+        {
             options.UseSqlServer(connectionStrings.SampleProjectDbCotextConnection);
         });
-
+        services.AddScoped<IUnitOfWork, SampleProjectDbContext>();
         services.AddScoped<IProductService, ProductService>();
 
         return services;
     }
-       
+
 }

@@ -3,12 +3,17 @@ using SampleProject.Entities;
 
 namespace SampleProject.DataLayer.Context;
 
-public class SampleProjectDbContext : DbContext
+public class SampleProjectDbContext : DbContext, IUnitOfWork
 {
     public SampleProjectDbContext(DbContextOptions options)
         : base(options)
     { }
 
     public DbSet<Product> Products { get; set; }
+
+    public int Savechanges()
+    {
+        throw new NotImplementedException();
+    }
 }
 

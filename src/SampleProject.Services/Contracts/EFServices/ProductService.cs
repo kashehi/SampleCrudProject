@@ -7,18 +7,18 @@ namespace SampleProject.Services.Contracts.EFServices
 {
     public class ProductService : IProductService
     {
-        private readonly SampleProjectDbContext _dbContext;
+        private readonly IUnitOfWork _uow;
         private readonly DbSet<Product> _product;
-        public ProductService(SampleProjectDbContext dbContext)
+        public ProductService(IUnitOfWork uow)
         {
-            _dbContext = dbContext;
-            _product = dbContext.Set<Product>();
+            _uow = uow;
+            _product = uow.Set<Product>();
         }
 
         // Get All Product Base on UpdateProductViewModel 
         public List<ViewProductViewModel> GetAll()
         {
-            var product = _dbContext.Products.Select(s => new ViewProductViewModel
+            var product = _product.Select(s => new ViewProductViewModel
             {
                 Id = s.Id,
                 Title = s.Title,
@@ -31,13 +31,14 @@ namespace SampleProject.Services.Contracts.EFServices
 
             }).ToList();
             return product;
+           
         }
-
+        
 
         //Get ProductInfo Base on Selected Id 
         public ViewProductViewModel GetById(int id)
         {
-            var product = _dbContext.Products.Where(w => w.Id == id).Select(s => new ViewProductViewModel
+            var product = _product.Where(w => w.Id == id).Select(s => new ViewProductViewModel
             {
                 Id = s.Id,
                 Title = s.Title,
@@ -60,6 +61,7 @@ namespace SampleProject.Services.Contracts.EFServices
         // Add Product To Database
         public void Add(ViewProductViewModel product)
         {
+
             _product.Add(new Entities.Product()
             {
                 Title = product.Title,
@@ -71,18 +73,18 @@ namespace SampleProject.Services.Contracts.EFServices
                 Mission = product.Mission,
 
             });
-            _dbContext.SaveChanges();
+            _uow.SaveChanges();
 
         }
 
         // Delete Product From Database
         public void Delete(int id)
         {
-            var product = _dbContext.Products.FirstOrDefault(p => p.Id == id);
+            var product = _product.FirstOrDefault(p => p.Id == id);
             if (product != null)
             {
-                _dbContext.Products.Remove(product);
-                _dbContext.SaveChanges();
+                _product.Remove(product);
+                _uow.SaveChanges();
 
 
             }
@@ -91,7 +93,7 @@ namespace SampleProject.Services.Contracts.EFServices
         // Update Product On Database
         public void Update(Product productInfo)
         {
-            var product = _dbContext.Products.Where(p => p.Id == productInfo.Id).SingleOrDefault();
+            var product = _product.Where(p => p.Id == productInfo.Id).SingleOrDefault();
             if (product != null)
             {
                 product.Title = productInfo.Title;
@@ -102,7 +104,7 @@ namespace SampleProject.Services.Contracts.EFServices
                 product.Model = productInfo.Model;
                 product.Mission = productInfo.Mission;
 
-                _dbContext.SaveChanges();
+                _uow.SaveChanges();
 
             }
 
