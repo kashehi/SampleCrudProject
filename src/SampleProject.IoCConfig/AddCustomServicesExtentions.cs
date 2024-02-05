@@ -12,7 +12,7 @@ public static class AddCustomServicesExtentions
     public static IServiceCollection AddCustomeServices(this IServiceCollection services)
     {
         var provider = services.BuildServiceProvider();
-        var connectionStrings = provider.GetRequiredService<IOptionsMonitor<ConnectionStrings>>().CurrentValue;
+        var connectionStrings = provider.GetRequiredService<IOptionsMonitor<ConnectionStringsModel>>().CurrentValue;
         services.AddDbContext<SampleProjectDbContext>(options =>
         {
             options.UseSqlServer(connectionStrings.SampleProjectDbCotextConnection);

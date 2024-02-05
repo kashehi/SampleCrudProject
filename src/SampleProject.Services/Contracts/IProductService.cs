@@ -6,10 +6,10 @@ namespace SampleProject.Services.Contracts;
 public interface IProductService
 
 {
-    List<ViewProductViewModel> GetAll();
-    ViewProductViewModel GetById(int id);
-    void Add(ViewProductViewModel product);
-    void Update(Product product);
+    List<ShowProductViewModel> GetAll();
+    UpdateProductViewModel GetById(int id);
+    void Add(AddProductViewModel product);
+    void Update(UpdateProductViewModel product);
     void Delete(int id);
 
 }

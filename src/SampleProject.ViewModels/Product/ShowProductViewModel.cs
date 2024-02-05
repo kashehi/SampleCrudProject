@@ -1,6 +1,6 @@
 ﻿namespace SampleProject.ViewModels.Product
 {
-    public class ViewProductViewModel
+    public class ShowProductViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }

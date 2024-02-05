@@ -1,7 +1,7 @@
 ﻿
 namespace SampleProject.ViewModels.App
 {
-    public class ConnectionStrings
+    public class ConnectionStringsModel
     {
         public string SampleProjectDbCotextConnection { get; set; }
     }

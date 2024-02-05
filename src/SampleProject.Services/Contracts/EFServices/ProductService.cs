@@ -8,7 +8,9 @@ namespace SampleProject.Services.Contracts.EFServices
     public class ProductService : IProductService
     {
         private readonly IUnitOfWork _uow;
+
         private readonly DbSet<Product> _product;
+
         public ProductService(IUnitOfWork uow)
         {
             _uow = uow;
@@ -16,9 +18,9 @@ namespace SampleProject.Services.Contracts.EFServices
         }
 
         // Get All Product Base on UpdateProductViewModel 
-        public List<ViewProductViewModel> GetAll()
+        public List<ShowProductViewModel> GetAll()
         {
-            var product = _product.Select(s => new ViewProductViewModel
+            var product = _product.Select(s => new ShowProductViewModel
             {
                 Id = s.Id,
                 Title = s.Title,
@@ -27,18 +29,18 @@ namespace SampleProject.Services.Contracts.EFServices
                 Price = s.Price,
                 Model = s.Model,
                 Mission = s.Mission,
-                Count=s.Count,  
+                Count = s.Count,
 
             }).ToList();
             return product;
-           
+
         }
-        
+
 
         //Get ProductInfo Base on Selected Id 
-        public ViewProductViewModel GetById(int id)
+        public UpdateProductViewModel GetById(int id)
         {
-            var product = _product.Where(w => w.Id == id).Select(s => new ViewProductViewModel
+            var product = _product.Where(w => w.Id == id).Select(s => new UpdateProductViewModel
             {
                 Id = s.Id,
                 Title = s.Title,
@@ -59,7 +61,7 @@ namespace SampleProject.Services.Contracts.EFServices
         }
 
         // Add Product To Database
-        public void Add(ViewProductViewModel product)
+        public void Add(AddProductViewModel product)
         {
 
             _product.Add(new Entities.Product()
@@ -91,7 +93,7 @@ namespace SampleProject.Services.Contracts.EFServices
         }
 
         // Update Product On Database
-        public void Update(Product productInfo)
+        public void Update(UpdateProductViewModel productInfo)
         {
             var product = _product.Where(p => p.Id == productInfo.Id).SingleOrDefault();
             if (product != null)

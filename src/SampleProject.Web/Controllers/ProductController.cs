@@ -39,7 +39,7 @@ public class ProductController : Controller
 
     [HttpPost]
 
-    public ActionResult Add(ViewProductViewModel product)
+    public ActionResult Add(AddProductViewModel product)
     {
         _productService.Add(product);
         return RedirectToAction("Index");
@@ -69,7 +69,7 @@ public class ProductController : Controller
     //Update ProductInfo On Database After Submit Form
 
     [HttpPost]
-    public IActionResult Update(Product product)
+    public IActionResult Update(UpdateProductViewModel product)
     {
 
         _productService.Update(product);
