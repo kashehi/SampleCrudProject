@@ -82,7 +82,7 @@ namespace SampleProject.Services.Contracts.EFServices
         // Delete Product From Database
         public void Delete(int id)
         {
-            var product = _product.FirstOrDefault(p => p.Id == id);
+            var product = _product.SingleOrDefault(p => p.Id == id);
             if (product != null)
             {
                 _product.Remove(product);
