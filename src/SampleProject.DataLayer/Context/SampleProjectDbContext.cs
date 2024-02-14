@@ -11,9 +11,6 @@ public class SampleProjectDbContext : DbContext, IUnitOfWork
 
     public DbSet<Product> Products { get; set; }
 
-    public int Savechanges()
-    {
-        throw new NotImplementedException();
-    }
+   
 }
 
