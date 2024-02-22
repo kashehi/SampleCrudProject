@@ -17,6 +17,7 @@
   <div class="mb-3">
     <label for="exampleInputTitle" class="form-label">نام محصول</label>
     <input type="text" class="form-control" id="Title" asp-for="Title">
+     <span asp-validation-for="Title" class="text-danger"></span>
    
   </div>
   <div class="mb-3">
@@ -26,22 +27,27 @@
   <div class="mb-3">
         <label for="exampleInputCount" class="form-label">تعداد</label>
         <input type="text" class="form-control" id="Count" asp-for="Count">
+        <span asp-validation-for="Count"  class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label for="exampleInputPrice" class="form-label">قیمت</label>
         <input type="text" class="form-control" id="Price" asp-for="Price">
+         <span asp-validation-for="Price"  class="text-danger"></span>
     </div>
      <div class="mb-3">
         <label for="exampleInputModel" class="form-label">مدل</label>
         <input type="text" class="form-control" id="Model" asp-for="Model">
+        <span asp-validation-for="Model"  class="text-danger"></span>
     </div>
      <div class="mb-3">
         <label for="exampleInputColor" class="form-label">رنگ</label>
         <input type="text" class="form-control" id="Color" asp-for="Color">
+        <span asp-validation-for="Color"  class="text-danger"></span>
     </div>
      <div class="mb-3">
         <label for="exampleInputMission" class="form-label">ابعاد</label>
         <input type="text" class="form-control" id="Mission" asp-for="Mission">
+        <span asp-validation-for="Mission"  class="text-danger"></span>
     </div>
 
   <button type="submit" class="btn btn-primary">ویرایش</button>
@@ -51,6 +57,9 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+
+    <partial name="_ValidationScriptsPartial" />
+}
 }
 
